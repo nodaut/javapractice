@@ -10,6 +10,10 @@ public class URLEncoderTest {
 		String encodedKeyword=URLEncoder.encode(keyword, "UTF-8");
 		System.out.println(baseURL+encodedKeyword);
 		
+		for(int i=0;i<10;i++){
+			;
+		}
+		
 /*		
   		1. URLEncoder란?
   			http://meyerweb.com/eric/tools/dencoder 에서 하듯, 
