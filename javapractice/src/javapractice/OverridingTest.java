@@ -18,7 +18,7 @@ public class OverridingTest extends ParentClass{
 
 	public static void main(String[] args) {
 		OverridingTest testObj = new OverridingTest();
-		testObj.testfunc();		
+		testObj.testfunc();
 	}
 }
 
