@@ -43,13 +43,17 @@ class ComputerFactory implements ProductAbstractFactory {
     public Product createProduct() {return new Computer(name);}
 }
 
+class TicketFactory implements ProductAbstractFactory {
+    private String name;
+    public TicketFactory (String name) {this.name = name;}
+    public Product createProduct() {return new Ticket(name);}
+}
+
 class ProductFactory {
     public static Product getProduct(ProductAbstractFactory product) {
         return product.createProduct();
     }
 }
-
-//--------------------------------------------------------------------------
 
 public class factoryMain {
 	public static void main(String[] args) {
@@ -59,19 +63,19 @@ public class factoryMain {
 		Product computer = ProductFactory.getProduct("computer", "apple");
 		System.out.println(ticket.toString());
 		System.out.println(computer.toString());
-		System.out.println("---Basic factory pattern test end---");*/
-		
-		Product com = ProductFactory.getProduct(new ComputerFactory("apple"));
-
-		
-
+		System.out.println("---Basic factory pattern test end---");
+*/
+		System.out.println("---abstract factory pattern test start---");
+		Product ticket = ProductFactory.getProduct(new ComputerFactory("Japan trip"));
+		Product computer = ProductFactory.getProduct(new ComputerFactory("apple"));
+		System.out.println(ticket.toString());
+		System.out.println(computer.toString());
+		System.out.println("---abstract factory pattern test end---");
 	}
 }
+/*
+Reference
+	https://blog.seotory.com/post/2016/08/java-factory-pattern
+	https://blog.seotory.com/post/2016/08/java-abstract-factory-pattern
+*/
 
-
-
-/* 팩토리 class는 인자를 받아 인자에 대한 적합한 class를 만들어 준다.
- * Reference
- * 	https://blog.seotory.com/post/2016/08/java-factory-pattern
- * 	https://blog.seotory.com/post/2016/08/java-abstract-factory-pattern
- */
