@@ -1,9 +1,6 @@
 package activeMQTest;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
@@ -25,27 +22,31 @@ public class Publisher {
 
 	public Publisher(String clientId, String topicName) {
 		try {
+			System.out.println("============publisher start line============");
 			//connection
 			ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_BROKER_URL);
 			connection = connectionFactory.createConnection();
 			connection.setClientID(clientId);
 
+			//session 생성
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			//topic 생성후 producer에 세팅
 			Topic topic = session.createTopic(topicName);
 			messageProducer = session.createProducer(topic);
 			
-			String messageId = String.valueOf(System.currentTimeMillis());
-			TextMessage textMessage = session.createTextMessage(messageId+"|select sum(TX_BYTES), sum(RX_BYTES) from system_tp");	
+			//메세지 생성
+			String messageId = String.valueOf(System.currentTimeMillis());	//currentTimeMillis : 현재 시간을 밀리세컨드 long value로 리턴해줌
+			TextMessage textMessage = session.createTextMessage(messageId+" This message come from publisher");	
 			
+			//메세지 send
 			this.messageProducer.send(textMessage);
-			System.out.println(textMessage.toString());
+			System.out.println("[publisher] "+textMessage.getText());
+			System.out.println("============publisher end line============\n");
+			this.connection.close();
+			System.out.println("[publisher] connection closed");
 			
 		} catch (JMSException e) {
-			// Handle the exception appropriately
+			e.printStackTrace();
 		}
 	}
-
-    public static void main (String[] args) {
-    	new Publisher("publisher-command", "LogProcessing");
-    }
 }
