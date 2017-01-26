@@ -1,6 +1,6 @@
 package javapractice;
 
-public class tmpTest {
+public class regularExp {
 
 	public static void main(String[] args) {
 		String test = "1484636223267|select sum(TX_BYTES), sum(RX_BYTES) from system_tp";
