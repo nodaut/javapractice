@@ -72,10 +72,14 @@ ResultSet의 개별 row의 데이터 update에 대한 method
 	void updateString(String column, String newData) : 명시된 column에 해당하는 데이터를 newData로 업데이트함(단 이 메서드는 현재의 ResultSet의 데이터만 업데이트할 뿐, 실제 DB는 업데이트 하지 않음)
 		=> 그냥 update는 executeQuery를 이용하는것 같음. resultset의 update는 그냥 이런게 있다는 정도만 알아 두자.
 =========================================================================================================
+executeQuery vs executeUpdate
+	executeQuery method : select 문으로 resultset을 받을 때 사용
+	executeUpdate method : INSERT, UPDATE, DELETE, CREATE TABLE 및 DROP TABLE과 같은 DDL문들을 실행	
+=========================================================================================================
 Reference
 	https://www.tutorialspoint.com/jdbc/jdbc-result-sets.htm
 	https://www.tutorialspoint.com/jdbc/updating-result-sets.htm
 	https://www.tutorialspoint.com/jdbc/viewing-result-sets.htm
-
+	http://j79sw.tistory.com/216
 */
 

@@ -34,9 +34,7 @@ public class MultiByImplemt {
 				System.out.println(e);
 			}
 		}
-
 	}
-
 }
 
 /*
