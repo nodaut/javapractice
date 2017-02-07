@@ -29,12 +29,12 @@ class FutureData implements Data{
 		if(Ready) return;
 		this.realData=realData;
 		this.Ready=true;
-		notifyAll();	//[point 3]setRealData가 완료되면 이 쓰레드를 기다리고 있는(wait 하고 있는) 것들을 깨운다.
+		notifyAll();	//[point 3]setRealData가 완료되면 waiting pool에 있는 쓰레드들을 깨운다
 	}
 	
 	public synchronized String getContent(){
 		while(!this.Ready){
-			try{wait();}	//[point 2]이 메서드를 가진 객체의 쓰레드를 기다린다.
+			try{wait();}	//[point 2]아직 데이터가 준비되어 있지 않으므로 모든 자원의 lock을 반납하고 일단 waiting pool에서 대기한다.
 			catch(Exception e){System.out.println(e);}
 		}
 		return this.realData.getContent();
@@ -86,9 +86,9 @@ future pattern
 
 1. 매커니즘
 	A는 B에게 특정 데이터를 요청한다. 이는 쓰레드로 실행된다. A는 데이터 요청을 기다리는 동안 다른 작업을 한다.
-		B내부에서 요청 데이터 세팅 메서드setdata가 실행된다. 근데 이게 좀 오래걸린다.
+		B내부에서  데이터 세팅 메서드setdata가 실행된다. 근데 이게 좀 오래걸린다.
 		B내부의 데이터를 리턴하는 메서드 getdata는 setdata가 끝날때까지 기다린다.(wait) 
-		B내부의 세팅 메서드setdata가 끝날때 기디라고 있던 getdata를 깨운다 (notify) 
+		B내부의 세팅 메서드setdata는 수행이 완료되면 기디라고 있던 getdata를 깨운다 (notify) 
 	A는 B에게 요청한 데이터를 받는다. 
 
 
@@ -111,8 +111,13 @@ future pattern
 				}
 			}
 	
-	(2) wait()는 이 메서드가 호출되기 전에 실행된 쓰레드를 기다린다.
-	(3) notifyAll()은 이 메서드가 호출되기 전에 실행된 쓰레드를 기다리는 것들을 깨운다
+	(2) wait()는 현재  쓰레드가 붙잡고 있는 모든 자원의 lock을 풀고 waiting pool에서 기다리게 한다.
+	(3) notifyAll()은 현재 wait()메서드로 인해 waiting pool에 있는 모든 쓰레드에게  이제 waiting pool에서 나와 lock을 획득할 수 있음을 통지한다. 
+		: 하지만 모든 waiting pool에 있는 단 하나의 쓰레드만 빠져나와 lock을 얻을 수 있다. 나머지 쓰레드들은 각자의 차례가 올때까지 계속 기다린다.
+	+ notify()는 waiting pool에 있는 임이의 한개의 쓰레드에게  통지한다. waiting pool의 그외 나머지 쓰레드들은 아예 통지조차 받지 못한다. 
+
+	
+	
 --------------------------------------------------------------------------------------------------------------------------------------------
 Reference
 	http://gomp.tistory.com/401
