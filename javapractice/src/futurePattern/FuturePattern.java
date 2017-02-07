@@ -66,7 +66,7 @@ public class FuturePattern {
 		final Host host =new Host();
 		final Data data1 = host.request(10, 'A');
 		final Data data2 = host.request(20, 'B');
-		final Data data3 = host.request(30, 'C');
+		final Data data3 = host.request(30, 'D');
 		
 		
 		try{
