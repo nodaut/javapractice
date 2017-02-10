@@ -1,4 +1,4 @@
-package multiThread;
+package Thread;
 
 class drawLine extends Thread{
 	private String drawChar;

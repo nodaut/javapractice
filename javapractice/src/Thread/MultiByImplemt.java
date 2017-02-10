@@ -1,4 +1,4 @@
-package multiThread;
+package Thread;
 
 class count2 implements Runnable{
 	Thread cntThread;

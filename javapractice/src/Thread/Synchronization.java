@@ -1,6 +1,6 @@
-package multiThread;
+package Thread;
 
-public class MultiSync{
+public class Synchronization{
 	
 	public static void main(String[] args) {
 	Runnable r = new myrun();

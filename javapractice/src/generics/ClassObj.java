@@ -5,7 +5,7 @@ class testClass{
 		System.out.println("<<This is a test method>>");
 	}
 }
-
+// XXX task tag 테스트
 class ClassGenerics{
 	//일반 지네릭스 메서드
 	public static <T> T ClassGenTest1(T t) {	//메서드 선언부 혹은 class 선언부에 <T>를 꼭 붙여야 한다. 안붙이면 에러남
