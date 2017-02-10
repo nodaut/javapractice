@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 //Do not import com.mysql.jdbc.*
 
+
 public class SQLTest 
 {
 	public static void main(String[] args) {
