@@ -1,3 +1,8 @@
+/*
+	실행방법 : 이 소스의 컴파일된 패키지(network)가 있는 경로로 이동하여 
+	"java network.TcpIpMultichatClient 대화명" 으로 실행
+ */
+
 package network;
 
 import java.io.*;
@@ -56,7 +61,7 @@ public class TcpIpMultichatClient {
 		String serverIP="127.0.0.1";
 		
 		if(args.length!=1){
-			System.out.println("USAGE : java TcpIpMultichatClient name\n exit..");
+			System.out.println("[USAGE]\nMove to the path which compiled package of this source(You should see 'network' folder then type below\njava network.TcpIpMultichatClient talkID\nexit..");
 			System.exit(0);
 		}
 		

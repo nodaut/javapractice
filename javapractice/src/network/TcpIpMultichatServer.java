@@ -1,3 +1,8 @@
+/*
+	실행방법 : 이 소스의 컴파일된 패키지(network)가 있는 경로로 이동하여 
+	"java network.TcpIpMultichatServer" 으로 실행
+ */
+
 package network;
 
 import java.io.*;
@@ -60,7 +65,7 @@ public class TcpIpMultichatServer {
 			try{
 				//client가 이 서버에 접속하면 일단clinets hashmap에 push한다.
 				name=in.readUTF();
-				sendToAll("#"+name+"entered this chat room!");
+				sendToAll("#"+name+" entered this chat room!");
 				clients.put(name, out);
 				System.out.println("Current user number is "+ clients.size());
 				
@@ -74,9 +79,9 @@ public class TcpIpMultichatServer {
 				 여기에 도달 했다는것은 while(in!=null)이 false가 되었다는 것이고, 이는 client 소켓과의 inputstream이 끊겼다는 것을 의미한다.
 				 따라서해당 name을 hashmap에서 remove한다.
 				*/
-				sendToAll("#"+name+"has outed this chat room!");
+				sendToAll("#"+name+" has outed this chat room!");
 				clients.remove(name);
-				System.out.println("["+ socket.getInetAddress()+":"+socket.getPort()+"]"+"disconnected!");
+				System.out.println("["+ socket.getInetAddress()+":"+socket.getPort()+"]"+" disconnected!");
 				System.out.println("Current user number is "+ clients.size());
 			}
 			
