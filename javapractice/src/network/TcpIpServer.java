@@ -11,7 +11,7 @@ public class TcpIpServer {
 		ServerSocket serverSocket = null;
 		try{
 			//서버소켓을 생성해 7777번 포트와 bind 시킴
-			serverSocket = new ServerSocket(7777);	
+			serverSocket = new ServerSocket(7777);
 			
 			/*  만약 try-catch문으로 익셉션 처리를 안하면 serverSocket을 close해야 함 근데 serverSocket은 일종의 
 				데몬 비슷하게 돌아가니까 close를 안하고 이렇게 IO인터럽트가 오면 닫히게끔 코드를 짜는듯 함 */
