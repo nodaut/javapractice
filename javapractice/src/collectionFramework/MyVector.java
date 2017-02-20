@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+//커스텀 vector
 public class MyVector implements List{
 	private Object[] data = null;	//객체를 담기위한 객체 배열
 	private int capacity=0;	//벡터의 총가용 용량
