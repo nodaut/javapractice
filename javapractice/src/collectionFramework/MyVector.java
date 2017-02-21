@@ -13,6 +13,7 @@ public class MyVector implements List{
 	private int size=0;	//현재 Object array에 들어 있는 데이터의 수
 
 	public MyVector(int capacity){	//생성자의 인자로 capacity를 받고 이 크기만큼 Object 배열을 생성함
+		System.out.println("MyVector constructor");
 		if(capacity<0)
 			throw new IllegalArgumentException("Not valid capacity value : "+capacity);
 		this.capacity=capacity;
