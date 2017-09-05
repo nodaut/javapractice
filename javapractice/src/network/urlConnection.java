@@ -6,7 +6,7 @@ import java.io.*;
 public class urlConnection {
 
 	public static void main(String[] args) {
-		String address = "http://naver.com";
+		String address = "https://www.naver.com/";
 		URL url = null;
 		
 		try {
