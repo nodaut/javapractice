@@ -22,8 +22,8 @@ public class LinAlgTest {
 		    System.out.println();
 		}
 		
-		 System.out.print( "Determinant : " + a.det());
-		
-		
+		//За·ДЅД
+		System.out.print( "Determinant : " + a.det());
+			
 	}
 }
